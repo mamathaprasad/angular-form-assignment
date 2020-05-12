@@ -1,0 +1,99 @@
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<form>
+<div class="form-group">
+<input required
+ ngModel 
+ name="userName"
+#userName="ngModel" 
+(change)="displayMessage(userName)" 
+pattern="[a-z]{5,7}"
+minlength="5"
+maxlength="7"
+id="userName" 
+type="text" 
+class="form-control" 
+placeholder="Your Username">
+<div class="alert alert-danger" *ngIf="!userName.valid && userName.touched">
+  <div *ngIf="userName.errors.required">Please enter your Username</div>
+  <div *ngIf="userName.errors.minlength">Please enter your username with atleast 5 characters</div>
+  <div *ngIf="userName.errors.pattern"> Doesn't match what we were expecting</div>
+</div>
+</div>
+
+<div class="form-group">
+  <input  required 
+  ngModel
+  name="userPassword"
+  #userPassword="ngModel"
+  (change)="displayMessage(userPassword)" 
+  minlength="6"
+  maxlength="9"
+   id="userPassword"
+   type="password"
+   class="form-control"
+  placeholder="enter your password">
+  <div class="alert alert-danger" *ngIf="!userPassword.valid && userPassword.touched">
+    <div *ngIf="userPassword.errors.required">Please enter your password</div>
+  <div *ngIf="userPassword.errors.minlength">Your password is weak</div>
+</div>
+</div>
+<div class="form-group">
+  <input  required 
+  ngModel
+  name="userAge"
+  #userAge="ngModel"
+  (change)="displayMessage(userAge)" 
+   id="userAge"
+   type="text"
+   class="form-control"
+  placeholder="enter your Age">
+  <div class="alert alert-danger" *ngIf="!userAge.valid && userAge.touched">
+    <div *ngIf="userAge.errors.required">Please enter your Age</div>
+</div>
+</div>
+
+<div class="form-group">
+  <input  required 
+  ngModel
+  name="userLocation"
+  #userLocation="ngModel"
+  (change)="displayMessage(userLocation)" 
+   id="userLocation"
+   type="text"
+   class="form-control"
+  placeholder="enter your Location">
+  <div class="alert alert-danger" *ngIf="!userLocation.valid && userLocation.touched">
+    <div *ngIf="userLocation.errors.required">Please enter your Location</div>
+</div>
+</div>
+
+
+<!-- <div class="form-group">
+<input required
+ngModel
+name="userQualification"
+#userQualification="ngModel"
+(change)="displayMessage(userQualification)"
+id="userQualification">
+<p>Select your Qualification</p>
+  10th<input type="checkbox"  name="10th" id="10th" class="form-control" >
+  12th<input type="checkbox" name="12th" id="12th" class="form-control">
+  Graduate<input type="checkbox" name="graduate" id="graduate" class="form-control">
+  <div class="alert alert-danger" *ngIf="!userQualification.valid ">
+    <div *ngIf="userQualification.errors.required">Please select your qualification</div>
+ </div> 
+</div> -->
+
+ <!-- <div class="form-group mx-auto mt-3" style="width: 300px;" 
+ *ngIf="userName.valid && userLocation.valid && userPassword.valid && userAge.valid && userQualification.valid">
+  <button type="submit" class="btn btn-success ml-5">Submit</button>
+</div> -->
+
+
+<button class="btn btn-success" [disabled]="(userName.value.length==0 || userPassword.value.length==0 
+|| userAge.value.length==0 || userLocation.value.length==0)">submit </button>
+</form>
+
